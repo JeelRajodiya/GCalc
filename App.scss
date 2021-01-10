@@ -1,0 +1,183 @@
+
+
+$bgcolor:rgb(40,40,40);
+$txtcolor:white;
+$bgactive:rgba(100,100,100,0.4);
+$signscolor:#82aaff;
+
+body{
+	background-color: $bgcolor;
+	color:var(--txtcolor);
+	margin: 4mm 0 0 0;
+}
+
+.prevent-select{
+-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
+
+.calc-btn{
+	font-weight: 400;
+	background-color: inherit;
+	font-family: sans-serif;
+	border:none;
+	outline: none;
+	width: inherit;
+	height: inherit;
+	color: $txtcolor;
+	border-radius: 50mm;
+	background-position: center;
+	transition: background 200ms;
+	font-size: 2em;
+	overflow: hidden;
+	text-align: center;
+	padding: 4mm;
+
+}
+
+
+
+#calculator-root{
+	display: grid;
+	grid-template-rows:10% 30% 60%;
+	height: 85vh;
+	/*position: fixed;*/
+}
+
+#dial-pad{
+	
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: 50% 75%;
+}
+
+
+#dial-pad-nums{
+	grid-row: 2;
+	grid-column:1;
+	grid-auto-columns: minmax(10mm,auto);
+	grid-auto-rows: minmax(10mm,auto);
+	display: grid;
+}
+
+#dial-pad-signs{
+	grid-row: 2;
+	grid-column:2;
+	display: grid;
+grid-auto-columns: minmax(10mm,auto);
+	grid-auto-rows: minmax(10mm,auto);
+
+
+}
+#dial-pad-specials{
+	background-color: #1c4aad;
+	display: grid;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-auto-columns: minmax(10mm,auto);
+	grid-auto-rows: minmax(10mm,auto);
+	font-size: 0.7em;
+}
+
+
+#dial-pad-signs>.calc-btn{
+	color:$signscolor;
+
+}
+#display{
+	text-align: right;
+	background-color: $bgcolor;
+	color: white;
+	border:none;
+	outline: none;
+	display: grid;
+	width: inherit;
+	display: flex;
+	display: grid;
+	grid-template-rows: 70% 30%;
+	padding: 0 5mm;
+}
+
+#menu-bar{
+	
+	width: 100%;
+	margin:0mm 0mm;
+	display: grid;
+	grid-template-columns: 20% 55% 25%;
+	
+}
+
+
+
+#rad-btn{
+	@extend .prevent-select;
+
+	font-family: sans-serif;
+	font-weight: 400;
+	/*width: 11mm;*/
+	/*height:6mm;*/
+	border-radius: 1mm;
+	display: inline-block;
+	background-position: center;
+	transition: background 500ms;
+	color:$signscolor;
+	width: 1cm;
+	text-align: center;
+	padding: 3mm 2mm;
+	margin: auto;
+	margin-left:4mm;
+}
+#rad-btn:active{
+background-color: $bgactive;
+transition: background 0ms;
+}
+
+#title-bar{
+	text-align: center;
+	@extend .prevent-select;
+	font-family: sans-serif;
+	padding: 3mm;
+	color:$signscolor;
+}
+
+#menu-btn{
+	font-family: sans-serif;
+	font-weight: 400;
+	border-radius: 1mm;
+	display: inline-block;
+	background-position: center;
+	transition: background 500ms;
+	color:$signscolor;
+	width: 14mm;
+	text-align: center;
+	padding: 3mm 2mm;
+	margin-right: 4mm;
+	margin:auto;
+	overflow: visible;
+}
+
+#menu-btn:active{
+	background-color: $bgactive;
+transition: background 0ms;
+
+}
+
+#display-main{
+	width: 98%;
+	background-color: inherit;
+	border:none;
+	outline: none;
+	color: white;
+	font-size: 2em;
+
+}
+
+#display-sub{
+	width:inherit;
+	background-color: inherit;
+	border:none;
+	outline: none;
+	color: rgb(150,150,150);
+	
+	font-size: 1.5em;
+
+}
