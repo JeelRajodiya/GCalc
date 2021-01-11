@@ -59,14 +59,7 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
     }
 }
 
-class RadBtn extends React.Component{
-    
-    render(){
-        return(
-            <span id="rad-btn">RAD</span>
-            )
-    }
-}
+
 
 class Tools{
     static genBtnGrid(data:string[][],props:any,activeColor:string){

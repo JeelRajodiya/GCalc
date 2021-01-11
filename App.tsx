@@ -13,7 +13,7 @@ import * as baseComponents from "./components/base";
 import Calc from "./calc.tsx";
 var calc = new Calc();
 
-var RadBtn = baseComponents.RadBtn;
+
 var Tools = baseComponents.Tools;
 var DisplayMain = baseComponents.DisplayMain;
 var DisplaySub = baseComponents.DisplaySub;
@@ -136,38 +136,6 @@ class Display extends React.Component<DisProps,DisState>{
 
 
 
-class TitleBar extends React.Component{
-    
-    render(){
-        return(
-            <span id="title-bar">
-            
-            </span>)
-    }
-}
-
-class MenuBtn extends React.Component{
-    
-    render(){
-        return(
-            <span id="menu-btn">
-            Menu
-            </span>)
-    }
-}
-class MenuBar extends React.Component{
- 
- render(){
-    return (
-        <div id="menu-bar">
-        <RadBtn/>
-        <TitleBar/>
-        <MenuBtn/>
-        </div>
-        )
- }
-
-}
 
 interface CalcState{
     displayVal:string;
