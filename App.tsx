@@ -42,7 +42,9 @@ interface CalcState{
     displayVal:string;
     subDisplayVal:string;
     displayData:string[];
-    dialPadSpecialsBtns:string[][]
+    dialPadSpecialsBtns:string[][];
+    isINV:boolean;
+    isRAD:boolean;
 }
 
 
@@ -54,6 +56,8 @@ class Calculator extends React.Component<{},CalcState>{
             displayVal:"",
             subDisplayVal:"",
             displayData:[],
+            isINV:false,
+            isRAD:true,
 
             dialPadSpecialsBtns:[
             ["INV","RAD","sin","cos","tan"],
@@ -61,9 +65,38 @@ class Calculator extends React.Component<{},CalcState>{
             ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
             }
         this.ChangeVal = this.ChangeVal.bind(this);
+        this.handleINVclick = this.handleINVclick.bind(this);
     }
+
+    handleINVclick(){
+        if (this.state.isINV){
+
+            this.setState({
+                isINV:false,
+                dialPadSpecialsBtns:[
+                ["INV","RAD","sin","cos","tan"],
+                ["%"  ,"ln" ,"log", "√" ,"^"  ],
+                ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+            });
+        }
+        else{
+            this.setState({
+                isINV:true,
+                dialPadSpecialsBtns:[
+                ["INV","RAD","sin⁻¹","cos⁻¹","tan⁻¹"],
+                ["%"  ,"eⁿ" ,"10ⁿ", "xⁿ" ,"^"  ],
+                ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+            });
+        }
+    }
+
     ChangeVal(e:any){
         let input = e.target.getAttribute("value");
+
+        if (input === "INV"){
+            this.handleINVclick();
+            return null;
+            }
         this.state.displayData.push(input);
         let [displayData,displayVal,subDisplayVal] = Calc.resolve(this.state.displayData);
         this.setState({
