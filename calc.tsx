@@ -27,7 +27,7 @@ class Calc{
 				displayDataVal = displayDataVal.replace("=","")
 			}
 			displaySubVal = eval(displayDataVal).toString();
-			console.log(displaySubVal);
+			
 		}
 		catch(e){}
 		if (event === "="){
