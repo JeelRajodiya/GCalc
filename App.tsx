@@ -1,4 +1,5 @@
 // 1.0
+// build 20
 
 import React from 'react';
 import { IonApp } from '@ionic/react';
@@ -37,23 +38,28 @@ const log = console.log;
 
 
 
-
-
 interface CalcState{
     displayVal:string;
     subDisplayVal:string;
     displayData:string[];
+    dialPadSpecialsBtns:string[][]
 }
 
 
 class Calculator extends React.Component<{},CalcState>{
     constructor(props:any){
         super(props);
+
         this.state = {
             displayVal:"",
             subDisplayVal:"",
-            displayData:[]
-        }
+            displayData:[],
+
+            dialPadSpecialsBtns:[
+            ["INV","RAD","sin","cos","tan"],
+            ["%"  ,"ln" ,"log", "√" ,"^"  ],
+            ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+            }
         this.ChangeVal = this.ChangeVal.bind(this);
     }
     ChangeVal(e:any){
@@ -71,12 +77,17 @@ class Calculator extends React.Component<{},CalcState>{
         return (
             <div id="calculator-root">
             <MenuBar/>
-            <Display displayVal={this.state.displayVal} subDisplayVal={this.state.subDisplayVal}/>
-            <DialPad  changeVal={this.ChangeVal}/>
+            <Display 
+                displayVal={this.state.displayVal} 
+                subDisplayVal={this.state.subDisplayVal}/>
+            <DialPad  
+                dialPadSpecialsBtns={this.state.dialPadSpecialsBtns}
+                changeVal={this.ChangeVal}/>
             </div>
             );
     }
 }
+
 function App():any {
 
   return (
