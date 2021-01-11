@@ -30,8 +30,7 @@ class RadBtn extends React.Component{
     }
 }
 
-class MenuBar extends React.Component{
- 
+export default class MenuBar extends React.Component{
  render(){
     return (
         <div id="menu-bar">
@@ -44,4 +43,4 @@ class MenuBar extends React.Component{
 
 }
 
-export MenuBar;
+

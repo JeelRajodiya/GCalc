@@ -118,4 +118,4 @@ class DisplaySub extends React.Component<DisplaySubProps>{
     }
 }
 
-export {CalcBtn,RadBtn,Tools,DisplayMain,DisplaySub}
+export {CalcBtn,Tools,DisplayMain,DisplaySub}

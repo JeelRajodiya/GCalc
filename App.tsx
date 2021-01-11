@@ -4,35 +4,43 @@ import React from 'react';
 import { IonApp } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import "./App.scss";
-import {
-  Plugins
-} from "@capacitor/core";
+import {Plugins} from "@capacitor/core";
 
 import * as baseComponents from "./components/base";
+import MenuBar from "./components/menu";
 //@ts-ignore
 import Calc from "./calc.tsx";
-var calc = new Calc();
 
-
+//baseComponents
 var Tools = baseComponents.Tools;
 var DisplayMain = baseComponents.DisplayMain;
 var DisplaySub = baseComponents.DisplaySub;
 
+// Calc instance.
+var calc = new Calc();
+
+// capacitor core plugins
 const {StatusBar,SplashScreen} = Plugins;
+//splashscreen hiding for fast load;
 SplashScreen.hide();
 
-
+// enabling stutasbar overlay web view
 interface StatusBarOverlaysWebviewOptions{
-    overlay:boolean;
-}
+    overlay:boolean;}
 let data:StatusBarOverlaysWebviewOptions;
 data =  {overlay:true};
 StatusBar.setOverlaysWebView(data);
+
+
+
 const log = console.log;
+
+
 
 interface DialPadSignsProps{
     changeVal:any
 }
+
 class DialPadSigns extends React.Component<DialPadSignsProps>{
    
     render(){
@@ -48,6 +56,8 @@ class DialPadSigns extends React.Component<DialPadSignsProps>{
 
     }
 }
+
+
 interface DialPadNumsSpecialsProps{
     changeVal:any
 }
@@ -66,11 +76,11 @@ class DialPadSpecials extends React.Component<DialPadNumsSpecialsProps>{
     }
 }
 
+
 interface DialPadNumsProps{
     changeVal:any
 }
 interface DialPadNumsState{
-    
 }
 class DialPadNums extends React.Component<DialPadNumsProps,DialPadNumsState>{
    
@@ -88,6 +98,8 @@ class DialPadNums extends React.Component<DialPadNumsProps,DialPadNumsState>{
     }
 
 }
+
+
 interface DialPadProps{
     changeVal:any;
 }
@@ -104,6 +116,7 @@ class DialPad extends React.Component<DialPadProps>{
             )
     }
 }
+
 
 interface DisState{
     readonly:boolean;
@@ -133,7 +146,6 @@ class Display extends React.Component<DisProps,DisState>{
             )
     }
 }
-
 
 
 
