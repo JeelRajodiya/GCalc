@@ -9,13 +9,12 @@ import {Plugins} from "@capacitor/core";
 import * as baseComponents from "./components/base";
 import MenuBar from "./components/menu";
 import DialPad from "./components/dialpad"
+import Display from "./components/display"
 //@ts-ignore
 import Calc from "./calc.tsx";
 
 //baseComponents
 var Tools = baseComponents.Tools;
-var DisplayMain = baseComponents.DisplayMain;
-var DisplaySub = baseComponents.DisplaySub;
 
 // Calc instance.
 var calc = new Calc();
@@ -37,34 +36,6 @@ StatusBar.setOverlaysWebView(data);
 const log = console.log;
 
 
-interface DisState{
-    readonly:boolean;
-}
-interface DisProps{
-    displayVal:string;
-    subDisplayVal:string;
-}
-class Display extends React.Component<DisProps,DisState>{
-    
-    constructor(props:any){
-    super(props);
-
-    this.state = {
-        readonly:true,
-        };
-    
-    }
-
-    
-    render():any{
-        return(
-            <div id="display">
-            <DisplayMain value={this.props.displayVal}/>
-            <DisplaySub value={this.props.subDisplayVal}/>
-            </div>
-            )
-    }
-}
 
 
 
