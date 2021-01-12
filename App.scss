@@ -21,8 +21,6 @@ body{
 	font-family: sans-serif;
 	border:none;
 	outline: none;
-	width: inherit;
-	height: inherit;
 	color: $txtcolor;
 	border-radius: 50mm;
 	background-position: center;
@@ -30,7 +28,8 @@ body{
 	font-size: 2em;
 	overflow: hidden;
 	text-align: center;
-	padding: 4mm;
+	padding: 0mm;
+
 
 }
 
@@ -39,7 +38,7 @@ body{
 #calculator-root{
 	display: grid;
 	grid-template-rows:10% 30% 60%;
-	height: 85vh;
+	height: 84vh;
 	/*position: fixed;*/
 }
 
@@ -50,12 +49,18 @@ body{
 	grid-template-rows: 50% 75%;
 }
 
+$minBtnsizeCol :auto;
+$maxBtnsizeCol :auto;
+
+$minBtnsizeRow :auto;
+$maxBtnsizeRow :auto;
 
 #dial-pad-nums{
 	grid-row: 2;
 	grid-column:1;
-	grid-auto-columns: minmax(10mm,auto);
-	grid-auto-rows: minmax(10mm,auto);
+	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
+	
 	display: grid;
 }
 
@@ -63,8 +68,9 @@ body{
 	grid-row: 2;
 	grid-column:2;
 	display: grid;
-grid-auto-columns: minmax(10mm,auto);
-	grid-auto-rows: minmax(10mm,auto);
+	
+grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
 
 
 }
@@ -73,8 +79,8 @@ grid-auto-columns: minmax(10mm,auto);
 	display: grid;
 	grid-column-start: 1;
 	grid-column-end: 3;
-	grid-auto-columns: minmax(10mm,auto);
-	grid-auto-rows: minmax(10mm,auto);
+	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
 	font-size: 0.7em;
 }
 
