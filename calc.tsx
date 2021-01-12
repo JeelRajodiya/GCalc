@@ -35,7 +35,12 @@ class Calc{
 			displaySubVal = ""
 			displayData = [displayMainVal];
 		}
-		
+		else if (event === "C"){
+			displayMainVal = "";
+			displaySubVal = "";
+			displayData = [];
+		}
+
 		return [displayData,displayMainVal,displaySubVal]
 	}
 }

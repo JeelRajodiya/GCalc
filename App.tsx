@@ -1,5 +1,5 @@
 // 1.0
-// build 21
+// build 22
 
 import React from 'react';
 import { IonApp } from '@ionic/react';
@@ -110,11 +110,22 @@ class Calculator extends React.Component<{},CalcState>{
             this.handleINVclick();
             return null;
             }
-        else if (input === "="){
-            this.handleOnAnswer();
-        }
         this.state.displayData.push(input);
         let [displayData,displayVal,subDisplayVal] = Calc.resolve(this.state.displayData);
+        
+         
+        if (displayVal !== "" && subDisplayVal === "" && input === "=" && this.state.clearBtn !=="C" ){
+            this.handleOnAnswer();
+            log(displayVal,subDisplayVal)
+        }
+        else if (input === "C"){
+            this.handleOnAnswer();
+        }
+        else if (this.state.clearBtn === "C" && input !== "="){
+            this.handleOnAnswer();
+        }
+        
+        
         this.setState({
             displayVal:displayVal,
             displayData:displayData,
