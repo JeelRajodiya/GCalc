@@ -5,13 +5,14 @@ import * as baseComponents from "./base";
 var Tools = baseComponents.Tools;
 interface DialPadSignsProps{
     changeVal:any
+    clearBtn:string;
 }
 
 class DialPadSigns extends React.Component<DialPadSignsProps>{
    
     render(){
         let data:string[][]=[
-                            ["÷","←"],
+                            ["÷",this.props.clearBtn],
                             ["×", ""],
                             ["-", ""],
                             ["+","="]
@@ -68,14 +69,19 @@ class DialPadNums extends React.Component<DialPadNumsProps,DialPadNumsState>{
 interface DialPadProps{
     changeVal:any;
     dialPadSpecialsBtns:string[][];
+    clearBtn:string;
 }
 export default class DialPad extends React.Component<DialPadProps>{
     
     render(){
         return(
             <div id="dial-pad" >
-            <DialPadSpecials changeVal={this.props.changeVal} btns={this.props.dialPadSpecialsBtns}/>
-            <DialPadSigns changeVal={this.props.changeVal}/>
+            <DialPadSpecials changeVal={this.props.changeVal} 
+            btns={this.props.dialPadSpecialsBtns}/>
+
+            <DialPadSigns changeVal={this.props.changeVal}
+            clearBtn={this.props.clearBtn}/>
+            
             <DialPadNums changeVal={this.props.changeVal}/>
             
             </div>

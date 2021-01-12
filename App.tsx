@@ -45,6 +45,7 @@ interface CalcState{
     dialPadSpecialsBtns:string[][];
     isINV:boolean;
     isRAD:boolean;
+    clearBtn:string;
 }
 
 
@@ -58,14 +59,17 @@ class Calculator extends React.Component<{},CalcState>{
             displayData:[],
             isINV:false,
             isRAD:true,
+            clearBtn:"←",
 
             dialPadSpecialsBtns:[
             ["INV","RAD","sin","cos","tan"],
             ["%"  ,"ln" ,"log", "√" ,"^"  ],
             ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
             }
+
         this.ChangeVal = this.ChangeVal.bind(this);
         this.handleINVclick = this.handleINVclick.bind(this);
+        this.handleOnAnswer = this.handleOnAnswer.bind(this);
     }
 
     handleINVclick(){
@@ -90,6 +94,15 @@ class Calculator extends React.Component<{},CalcState>{
         }
     }
 
+    handleOnAnswer(){
+        if (this.state.clearBtn==="←"){
+            this.setState({clearBtn:"C"})
+        }
+        else{
+         this.setState({clearBtn:"←"})   
+        }
+    }
+
     ChangeVal(e:any){
         let input = e.target.getAttribute("value");
 
@@ -97,6 +110,9 @@ class Calculator extends React.Component<{},CalcState>{
             this.handleINVclick();
             return null;
             }
+        else if (input === "="){
+            this.handleOnAnswer();
+        }
         this.state.displayData.push(input);
         let [displayData,displayVal,subDisplayVal] = Calc.resolve(this.state.displayData);
         this.setState({
@@ -115,7 +131,8 @@ class Calculator extends React.Component<{},CalcState>{
                 subDisplayVal={this.state.subDisplayVal}/>
             <DialPad  
                 dialPadSpecialsBtns={this.state.dialPadSpecialsBtns}
-                changeVal={this.ChangeVal}/>
+                changeVal={this.ChangeVal}
+                clearBtn={this.state.clearBtn}/>
             </div>
             );
     }

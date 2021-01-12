@@ -30,7 +30,6 @@ body{
 	text-align: center;
 	padding: 0mm;
 
-
 }
 
 
@@ -39,7 +38,6 @@ body{
 	display: grid;
 	grid-template-rows:10% 30% 60%;
 	height: 84vh;
-	/*position: fixed;*/
 }
 
 #dial-pad{
@@ -50,7 +48,7 @@ body{
 }
 
 $minBtnsizeCol :auto;
-$maxBtnsizeCol :auto;
+$maxBtnsizeCol :1fr;
 
 $minBtnsizeRow :auto;
 $maxBtnsizeRow :auto;
