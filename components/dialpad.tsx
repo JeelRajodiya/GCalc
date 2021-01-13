@@ -9,8 +9,9 @@ interface DialPadSignsProps{
 }
 
 class DialPadSigns extends React.Component<DialPadSignsProps>{
-   
+
     render(){
+
         let data:string[][]=[
                             ["÷",this.props.clearBtn],
                             ["×", ""],
@@ -31,13 +32,13 @@ interface DialPadNumsSpecialsProps{
     btns:string[][];
 }
 class DialPadSpecials extends React.Component<DialPadNumsSpecialsProps>{
-    
+
     render(){
-        
+
         let bgActive = "rgba(160,160,160,0.3)"
         let result = Tools.genBtnGrid(this.props.btns,this.props,bgActive);
         return (<div id="dial-pad-specials">{result}</div>)
-       
+
     }
 }
 
@@ -48,7 +49,7 @@ interface DialPadNumsProps{
 interface DialPadNumsState{
 }
 class DialPadNums extends React.Component<DialPadNumsProps,DialPadNumsState>{
-   
+
     render(){
 
         let data:string[][] = [
@@ -72,18 +73,18 @@ interface DialPadProps{
     clearBtn:string;
 }
 export default class DialPad extends React.Component<DialPadProps>{
-    
+
     render(){
         return(
             <div id="dial-pad" >
-            <DialPadSpecials changeVal={this.props.changeVal} 
+            <DialPadSpecials changeVal={this.props.changeVal}
             btns={this.props.dialPadSpecialsBtns}/>
 
             <DialPadSigns changeVal={this.props.changeVal}
             clearBtn={this.props.clearBtn}/>
-            
+
             <DialPadNums changeVal={this.props.changeVal}/>
-            
+
             </div>
             )
     }

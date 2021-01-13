@@ -14,9 +14,6 @@ import Display from "./components/display"
 //@ts-ignore
 import Calc from "./calc.tsx";
 
-//baseComponents
-var Tools = baseComponents.Tools;
-
 // Calc instance.
 var calc = new Calc();
 
@@ -83,6 +80,7 @@ class Calculator extends React.Component<{},CalcState>{
     handleRADclick(){
         if (this.state.RADbtn === "RAD"){
           this.setState({RADbtn:"DEG"});
+          calc.isRAD = false;
           this.dialPadSpecialsBtns[0][1] = this.state.RADbtn;
           this.dialPadSpecialsBtnsINV[0][1] = this.state.RADbtn;
           let dialPadSpecialsBtns = this.state.isINV ? this.dialPadSpecialsBtnsINV : this.dialPadSpecialsBtns;
@@ -91,6 +89,7 @@ class Calculator extends React.Component<{},CalcState>{
         }
         else{
           this.setState({RADbtn:"RAD"});
+          calc.isRAD = true;
           this.dialPadSpecialsBtns[0][1] = this.state.RADbtn;
           this.dialPadSpecialsBtnsINV[0][1] = this.state.RADbtn;
           let dialPadSpecialsBtns = this.state.isINV ? this.dialPadSpecialsBtnsINV : this.dialPadSpecialsBtns;
@@ -139,11 +138,10 @@ class Calculator extends React.Component<{},CalcState>{
             return null;
           }
         this.state.displayData.push(input);
-        let [displayData,displayVal,subDisplayVal] = Calc.resolve(this.state.displayData);
+        let [displayData,displayVal,subDisplayVal] = calc.resolve(this.state.displayData);
 
         if (displayVal !== "" && subDisplayVal === "" && input === "=" && this.state.clearBtn !=="C" ){
             this.handleOnAnswer();
-            log(displayVal,subDisplayVal)
         }
         else if (input === "C"){
             this.handleOnAnswer();

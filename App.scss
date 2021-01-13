@@ -41,7 +41,7 @@ body{
 }
 
 #dial-pad{
-	
+
 	display: grid;
 	grid-template-columns: 60% 40%;
 	grid-template-rows: 50% 75%;
@@ -58,7 +58,7 @@ $maxBtnsizeRow :1fr;
 	grid-column:1;
 	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
 	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
-	
+
 	display: grid;
 }
 
@@ -66,10 +66,9 @@ $maxBtnsizeRow :1fr;
 	grid-row: 2;
 	grid-column:2;
 	display: grid;
-	
+
 grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
 	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
-
 
 }
 #dial-pad-specials{
@@ -80,6 +79,7 @@ grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
 	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
 	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
 	font-size: 0.7em;
+
 }
 
 
@@ -102,12 +102,12 @@ grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
 }
 
 #menu-bar{
-	
+
 	width: 100%;
 	margin:0mm 0mm;
 	display: grid;
 	grid-template-columns: 20% 55% 25%;
-	
+
 }
 
 
@@ -153,10 +153,10 @@ transition: background 0ms;
 	color:$signscolor;
 	width: 14mm;
 	text-align: center;
-	padding: 3mm 2mm;
+	padding: 4mm 2mm;
 	margin-right: 4mm;
-	margin:auto;
-	overflow: visible;
+
+
 }
 
 #menu-btn:active{
@@ -181,7 +181,7 @@ transition: background 0ms;
 	border:none;
 	outline: none;
 	color: rgb(150,150,150);
-	
+
 	font-size: 1.5em;
 
 }

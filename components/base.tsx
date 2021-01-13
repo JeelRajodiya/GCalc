@@ -6,7 +6,7 @@ interface CalcBtnProps {
     row:string;
     changeVal:any;
     activeColor:string;
-    
+
 }
 
 interface CalcBtnState{
@@ -14,16 +14,16 @@ interface CalcBtnState{
 }
 
 class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
-    
+
     constructor(props:any){
         super(props);
         this.touchStartHandler = this.touchStartHandler.bind(this);
         this.touchEndHandler = this.touchEndHandler.bind(this);
         this.state = {bgcolor:"inherit"}
-        
+
     }
     touchStartHandler(){
-        if (this){            
+        if (this){
             this.setState({bgcolor:this.props.activeColor})
 
         }
@@ -35,9 +35,9 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
             },200)
     }
     render(){
-            
+
         return (
-            <button className="calc-btn" 
+            <button className="calc-btn"
             onTouchStart={(e) => {
                 this.props.changeVal(e);
                 this.touchStartHandler();
@@ -50,11 +50,11 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
             //@ts-ignore
             value={this.props.text}
                 >
-            
-            
+
+
             {this.props.text}
             </button>
-            
+
             );
     }
 }
@@ -63,11 +63,11 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
 
 class Tools{
     static genBtnGrid(data:string[][],props:any,activeColor:string){
-        
+
         let result = [];
         let row = 1;
         let col = 1;
-         
+
         for (let item of data){
             for (let item2 of item){
                 if (item2 === ""){col++; continue};
@@ -77,7 +77,7 @@ class Tools{
                  changeVal={props.changeVal}
                  activeColor = {activeColor as string}
                  key={item2}
-                
+
                 />);
                 col++
             }

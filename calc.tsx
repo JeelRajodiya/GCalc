@@ -5,7 +5,7 @@ class Calc{
 		this.isRAD = false;
 		this.memory = ""
 	}
-	static resolve(displayData:Array<string>){
+  resolve(displayData:Array<string>){
 		let event = displayData[displayData.length-1]
 		if (event ==="←"){
 			displayData.pop();
@@ -27,7 +27,7 @@ class Calc{
 				displayDataVal = displayDataVal.replace("=","")
 			}
 			displaySubVal = eval(displayDataVal).toString();
-			
+
 		}
 		catch(e){}
 		if (event === "="){
