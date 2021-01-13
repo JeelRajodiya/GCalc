@@ -6,7 +6,6 @@ interface CalcBtnProps {
     row:string;
     changeVal:any;
     activeColor:string;
-
 }
 
 interface CalcBtnState{
@@ -32,7 +31,7 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
     touchEndHandler(){
     setTimeout(()=>{
     this.setState({bgcolor:"inherit"})
-            },200)
+      },200)
     }
     render(){
 
