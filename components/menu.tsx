@@ -2,17 +2,17 @@ import React from "react";
 
 
 class TitleBar extends React.Component{
-    
+
     render(){
         return(
             <span id="title-bar">
-            
+
             </span>)
     }
 }
 
 class MenuBtn extends React.Component{
-    
+
     render(){
         return(
             <span id="menu-btn">
@@ -21,20 +21,27 @@ class MenuBtn extends React.Component{
     }
 }
 
-class RadBtn extends React.Component{
-    
+interface RadBtnProps{
+  value:any[];
+}
+class RadBtn extends React.Component<RadBtnProps>{
+
     render(){
         return(
-            <span id="rad-btn">RAD</span>
+            <span id="rad-btn" onClick = {this.props.value[1]}>{this.props.value[0]}</span>
             )
     }
 }
 
-export default class MenuBar extends React.Component{
+interface MenuBarProps{
+  RADbtnVal:any[];
+}
+export default class MenuBar extends React.Component<MenuBarProps>{
+
  render(){
     return (
         <div id="menu-bar">
-        <RadBtn/>
+        <RadBtn value={this.props.RADbtnVal}/>
         <TitleBar/>
         <MenuBtn/>
         </div>
@@ -42,5 +49,3 @@ export default class MenuBar extends React.Component{
  }
 
 }
-
-

@@ -44,52 +44,75 @@ interface CalcState{
     displayData:string[];
     dialPadSpecialsBtns:string[][];
     isINV:boolean;
-    isRAD:boolean;
     clearBtn:string;
+    RADbtn:string;
 }
 
 
 class Calculator extends React.Component<{},CalcState>{
+    private dialPadSpecialsBtns:string[][];
+    private dialPadSpecialsBtnsINV:string[][];
+
     constructor(props:any){
         super(props);
+        this.dialPadSpecialsBtns = [
+        ["INV","RAD","sin","cos","tan"],
+        ["%"  ,"ln" ,"log", "√" ,"^"  ],
+        ["π"  ,"e"  ,"("  ,")"  ,"!"  ]];
+
+        this.dialPadSpecialsBtnsINV = [
+        ["INV","RAD","sin⁻¹","cos⁻¹","tan⁻¹"],
+        ["%"  ,"eⁿ" ,"10ⁿ", "xⁿ" ,"^"  ],
+        ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
 
         this.state = {
             displayVal:"",
             subDisplayVal:"",
             displayData:[],
             isINV:false,
-            isRAD:true,
             clearBtn:"←",
-
-            dialPadSpecialsBtns:[
-            ["INV","RAD","sin","cos","tan"],
-            ["%"  ,"ln" ,"log", "√" ,"^"  ],
-            ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+            RADbtn:"DEG",
+            dialPadSpecialsBtns:this.dialPadSpecialsBtns
             }
 
         this.ChangeVal = this.ChangeVal.bind(this);
         this.handleINVclick = this.handleINVclick.bind(this);
         this.handleOnAnswer = this.handleOnAnswer.bind(this);
+        this.handleRADclick = this.handleRADclick.bind(this);
+    }
+    handleRADclick(){
+        if (this.state.RADbtn === "RAD"){
+          this.setState({RADbtn:"DEG"});
+          this.dialPadSpecialsBtns[0][1] = this.state.RADbtn;
+          this.dialPadSpecialsBtnsINV[0][1] = this.state.RADbtn;
+          let dialPadSpecialsBtns = this.state.isINV ? this.dialPadSpecialsBtnsINV : this.dialPadSpecialsBtns;
+          this.setState(
+            {dialPadSpecialsBtns:dialPadSpecialsBtns});
+        }
+        else{
+          this.setState({RADbtn:"RAD"});
+          this.dialPadSpecialsBtns[0][1] = this.state.RADbtn;
+          this.dialPadSpecialsBtnsINV[0][1] = this.state.RADbtn;
+          let dialPadSpecialsBtns = this.state.isINV ? this.dialPadSpecialsBtnsINV : this.dialPadSpecialsBtns;
+
+          this.setState(
+            {dialPadSpecialsBtns:dialPadSpecialsBtns});
+        }
     }
 
     handleINVclick(){
+
         if (this.state.isINV){
 
             this.setState({
                 isINV:false,
-                dialPadSpecialsBtns:[
-                ["INV","RAD","sin","cos","tan"],
-                ["%"  ,"ln" ,"log", "√" ,"^"  ],
-                ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+                dialPadSpecialsBtns:this.dialPadSpecialsBtns
             });
         }
         else{
             this.setState({
                 isINV:true,
-                dialPadSpecialsBtns:[
-                ["INV","RAD","sin⁻¹","cos⁻¹","tan⁻¹"],
-                ["%"  ,"eⁿ" ,"10ⁿ", "xⁿ" ,"^"  ],
-                ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
+                dialPadSpecialsBtns:this.dialPadSpecialsBtnsINV
             });
         }
     }
@@ -99,7 +122,7 @@ class Calculator extends React.Component<{},CalcState>{
             this.setState({clearBtn:"C"})
         }
         else{
-         this.setState({clearBtn:"←"})   
+         this.setState({clearBtn:"←"})
         }
     }
 
@@ -110,10 +133,14 @@ class Calculator extends React.Component<{},CalcState>{
             this.handleINVclick();
             return null;
             }
+          else if (input === "RAD" || input === "DEG"){
+            this.handleRADclick();
+
+            return null;
+          }
         this.state.displayData.push(input);
         let [displayData,displayVal,subDisplayVal] = Calc.resolve(this.state.displayData);
-        
-         
+
         if (displayVal !== "" && subDisplayVal === "" && input === "=" && this.state.clearBtn !=="C" ){
             this.handleOnAnswer();
             log(displayVal,subDisplayVal)
@@ -124,23 +151,21 @@ class Calculator extends React.Component<{},CalcState>{
         else if (this.state.clearBtn === "C" && input !== "="){
             this.handleOnAnswer();
         }
-        
-        
         this.setState({
             displayVal:displayVal,
             displayData:displayData,
             subDisplayVal:subDisplayVal
         })
-        
+
     }
     render():any{
         return (
             <div id="calculator-root">
-            <MenuBar/>
-            <Display 
-                displayVal={this.state.displayVal} 
+            <MenuBar RADbtnVal = {[this.state.RADbtn,this.handleRADclick]}/>
+            <Display
+                displayVal={this.state.displayVal}
                 subDisplayVal={this.state.subDisplayVal}/>
-            <DialPad  
+            <DialPad
                 dialPadSpecialsBtns={this.state.dialPadSpecialsBtns}
                 changeVal={this.ChangeVal}
                 clearBtn={this.state.clearBtn}/>
@@ -161,5 +186,3 @@ function App():any {
 };
 
 export default App;
-
-
