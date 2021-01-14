@@ -1,5 +1,5 @@
 // 1.0
-// build 23
+// build 24
 
 import React from 'react';
 import { IonApp } from '@ionic/react';
