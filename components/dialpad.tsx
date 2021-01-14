@@ -1,6 +1,7 @@
 
 import React from "react";
 import * as baseComponents from "./base";
+import "./dialpad.scss"
 
 var Tools = baseComponents.Tools;
 interface DialPadSignsProps{

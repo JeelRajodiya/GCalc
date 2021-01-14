@@ -1,4 +1,5 @@
 import React from "react";
+import "./base.scss";
 
 interface CalcBtnProps {
     text:string;
@@ -41,7 +42,12 @@ class CalcBtn extends React.Component<CalcBtnProps,CalcBtnState>{
                 this.props.changeVal(e);
                 this.touchStartHandler();
             }}
+            onMouseDown ={(e)=>{
+              this.props.changeVal(e);
+              this.touchStartHandler();
+            }}
             onTouchEnd={this.touchEndHandler}
+            onMouseUp = {this.touchEndHandler}
             style={{gridRow:this.props.row,
                 gridColumn:this.props.col,
                 backgroundColor:this.state.bgcolor

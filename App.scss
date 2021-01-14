@@ -15,79 +15,14 @@ body{
 -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
 }
 
-.calc-btn{
-	font-weight: 400;
-	background-color: inherit;
-	font-family: sans-serif;
-	border:none;
-	outline: none;
-	color: $txtcolor;
-	border-radius: 50mm;
-	background-position: center;
-	transition: background 200ms;
-	font-size: 2em;
-	overflow: hidden;
-	text-align: center;
-	padding: 0mm;
-
-}
-
-
-
 #calculator-root{
 	display: grid;
 	grid-template-rows:10% 30% 60%;
 	height: 84vh;
 }
 
-#dial-pad{
-
-	display: grid;
-	grid-template-columns: 60% 40%;
-	grid-template-rows: 50% 75%;
-}
-
-$minBtnsizeCol :auto;
-$maxBtnsizeCol :1fr;
-
-$minBtnsizeRow :auto;
-$maxBtnsizeRow :1fr;
-
-#dial-pad-nums{
-	grid-row: 2;
-	grid-column:1;
-	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
-	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
-
-	display: grid;
-}
-
-#dial-pad-signs{
-	grid-row: 2;
-	grid-column:2;
-	display: grid;
-
-grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
-	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
-
-}
-#dial-pad-specials{
-	background-color: #1c4aad;
-	display: grid;
-	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
-	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
-	font-size: 0.7em;
-
-}
-
-
-#dial-pad-signs>.calc-btn{
-	color:$signscolor;
-
-}
 #display{
+
 	text-align: right;
 	background-color: $bgcolor;
 	color: white;
@@ -144,6 +79,7 @@ transition: background 0ms;
 }
 
 #menu-btn{
+	@extend .prevent-select;
 	font-family: sans-serif;
 	font-weight: 400;
 	border-radius: 1mm;
@@ -151,9 +87,11 @@ transition: background 0ms;
 	background-position: center;
 	transition: background 500ms;
 	color:$signscolor;
-	width: 14mm;
+	width: 13mm;
 	text-align: center;
-	padding: 4mm 2mm;
+	padding: 3mm 2mm;
+	margin: auto;
+	margin-left:auto;
 	margin-right: 4mm;
 
 

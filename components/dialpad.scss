@@ -1,0 +1,48 @@
+$signscolor:#82aaff;
+
+#dial-pad{
+
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: 50% 75%;
+}
+
+$minBtnsizeCol :auto;
+$maxBtnsizeCol :1fr;
+
+$minBtnsizeRow :auto;
+$maxBtnsizeRow :1fr;
+
+#dial-pad-nums{
+	grid-row: 2;
+	grid-column:1;
+	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
+
+	display: grid;
+}
+
+#dial-pad-signs{
+	grid-row: 2;
+	grid-column:2;
+	display: grid;
+
+grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
+
+}
+#dial-pad-specials{
+	background-color: #1c4aad;
+	display: grid;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-auto-columns: minmax($minBtnsizeCol,$maxBtnsizeCol);
+	grid-auto-rows: minmax($minBtnsizeRow,$maxBtnsizeRow);
+	font-size: 0.7em;
+
+}
+
+
+#dial-pad-signs>.calc-btn{
+	color:$signscolor;
+}
