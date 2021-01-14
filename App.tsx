@@ -29,11 +29,7 @@ let data:StatusBarOverlaysWebviewOptions;
 data =  {overlay:true};
 StatusBar.setOverlaysWebView(data);
 
-
-
 const log = console.log;
-
-
 
 interface CalcState{
     displayVal:string;
@@ -59,7 +55,7 @@ class Calculator extends React.Component<{},CalcState>{
 
         this.dialPadSpecialsBtnsINV = [
         ["INV","RAD","sin⁻¹","cos⁻¹","tan⁻¹"],
-        ["%"  ,"eⁿ" ,"10ⁿ", "xⁿ" ,"^"  ],
+        ["%"  ,"eⁿ" ,"10ⁿ", "x²" ,"^"  ],
         ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
 
         this.state = {
@@ -98,7 +94,6 @@ class Calculator extends React.Component<{},CalcState>{
             {dialPadSpecialsBtns:dialPadSpecialsBtns});
         }
     }
-
     handleINVclick(){
 
         if (this.state.isINV){
@@ -115,7 +110,6 @@ class Calculator extends React.Component<{},CalcState>{
             });
         }
     }
-
     handleOnAnswer(){
         if (this.state.clearBtn==="←"){
             this.setState({clearBtn:"C"})
@@ -124,7 +118,6 @@ class Calculator extends React.Component<{},CalcState>{
          this.setState({clearBtn:"←"})
         }
     }
-
     ChangeVal(e:any){
         let input = e.target.getAttribute("value");
 
@@ -137,8 +130,8 @@ class Calculator extends React.Component<{},CalcState>{
 
             return null;
           }
-        this.state.displayData.push(input);
-        let [displayData,displayVal,subDisplayVal] = calc.resolve(this.state.displayData);
+
+        let [displayData,displayVal,subDisplayVal] = calc.resolve(this.state.displayData,input);
 
         if (displayVal !== "" && subDisplayVal === "" && input === "=" && this.state.clearBtn !=="C" ){
             this.handleOnAnswer();
