@@ -7,11 +7,12 @@ class Calc{
 		this.memory = ""
 	}
 
-	static replaceAll(displayData:Array<string>,find:string,replace:string){
+	static replaceAll(displayData:Array<string>,replacements:any){
 		for (let i = 0; i<displayData.length ; i++){
 			let cur = displayData[i];
-			if (cur === find){
-				displayData[i] = replace;
+			if ( replacements.hasOwnProperty(cur) ){
+				//@ts-ignore
+				displayData[i] = replacements[cur];
 				}
 			}
 			return displayData;
@@ -20,13 +21,37 @@ class Calc{
 
 	static genJsString(input:Array<string>){
 		let inputSlice = input.slice();
-		inputSlice = this.replaceAll(inputSlice,"×","*")
-		inputSlice = this.replaceAll(inputSlice,"÷","/")
-		inputSlice = this.replaceAll(inputSlice,"^","**")
-		inputSlice = this.replaceAll(inputSlice,"π",Math.PI.toString())
-		inputSlice =this.replaceAll(inputSlice,"%","/100");
+		let replacements = {
+			"π":"Math.PI",
+			"×":"*",
+			"÷":"/",
+			"^":"**",
+			"%":"/100",
+			"sin(":"Math.sin(",
+			"tan(":"Math.tan(",
+			"cos(":"Math.cos(",
+			"e":"Math.E"
+		}
+
+		inputSlice = this.replaceAll(inputSlice,replacements);
 		let jsString = inputSlice.join("");
+
 		return jsString;
+	}
+
+	static genValidData(input:Array<string>){
+
+		let replacements = {
+			"sin":"sin(",
+			"tan":"tan(",
+			"cos":"cos(",
+			"log":"log(",
+			"ln":"ln(",
+			"√":"√("
+		}
+		input = this.replaceAll(input,replacements);
+
+		return input;
 	}
 
   resolve(displayData:Array<string>,event:string){
@@ -38,6 +63,7 @@ class Calc{
 			displayData.push(event);
 		}
 
+		displayData = Calc.genValidData(displayData);
 		let displayMainVal = displayData.join("");
 		let displaySubVal = "";
 
