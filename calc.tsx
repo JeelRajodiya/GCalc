@@ -1,3 +1,4 @@
+
 class Calc{
 	public isRAD:boolean;
 	private memory:string;
@@ -17,23 +18,54 @@ class Calc{
 			}
 			return displayData;
 		}
+	sin(x:number){
+				if (!this.isRAD){
+					return Math.sin(x * (Math.PI /180));
+				}
+				else{
+					return Math.sin(x);
+				}
+		}
+	cos(x:number){
+		if (!this.isRAD){
+			return Math.cos(x * (Math.PI /180));
+		}
+		else{
+			return Math.cos(x);
+		}
+	}
+	tan(x:number){
+		return this.sin(x) / this.cos(x);
+	}
+	factorial(x:number){
+		var rval = 1;
+		for (let i = 2 ; i <= x ; i++){
+			rval = rval * i;
+		}
+		return rval;
+	}
 
-
-	static genJsString(input:Array<string>){
+	genJsString(input:Array<string>){
 		let inputSlice = input.slice();
+
 		let replacements = {
 			"π":"Math.PI",
 			"×":"*",
 			"÷":"/",
 			"^":"**",
 			"%":"/100",
-			"sin(":"Math.sin(",
-			"tan(":"Math.tan(",
-			"cos(":"Math.cos(",
-			"e":"Math.E"
+			"sin(":"this.sin(",
+			"tan(":"this.tan(",
+			"cos(":"this.cos(",
+			"e":"Math.E",
+			"√(":"Math.sqrt(",
+			"ln(":"Math.log(",
+			"log(":"Math.log10(",
+
+
 		}
 
-		inputSlice = this.replaceAll(inputSlice,replacements);
+		inputSlice = Calc.replaceAll(inputSlice,replacements);
 		let jsString = inputSlice.join("");
 
 		return jsString;
@@ -68,7 +100,7 @@ class Calc{
 		let displaySubVal = "";
 
 		try{
-			let displayDataVal = Calc.genJsString(displayData) ;
+			let displayDataVal =this.genJsString(displayData) ;
 			displaySubVal = eval(displayDataVal).toString();
 		}
 		catch(e){}
