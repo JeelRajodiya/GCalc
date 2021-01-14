@@ -1,0 +1,69 @@
+
+$bgactive:rgba(100,100,100,0.4);
+$signscolor:#82aaff;
+
+.prevent-select{
+-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
+
+#menu-bar{
+	width: 100%;
+	margin:0mm 0mm;
+	display: grid;
+	grid-template-columns: 20% 55% 25%;
+}
+
+
+#rad-btn{
+	@extend .prevent-select;
+	font-family: sans-serif;
+	font-weight: 400;
+	border-radius: 1mm;
+	display: inline-block;
+	background-position: center;
+	transition: background 500ms;
+	color:$signscolor;
+	width: 1cm;
+	text-align: center;
+	padding: 3mm 2mm;
+	margin: auto;
+	margin-left:4mm;
+}
+
+#rad-btn:active{
+background-color: $bgactive;
+transition: background 0ms;
+}
+
+#title-bar{
+	text-align: center;
+	@extend .prevent-select;
+	font-family: sans-serif;
+	padding: 3mm;
+	color:$signscolor;
+}
+
+#menu-btn{
+	@extend .prevent-select;
+	font-family: sans-serif;
+	font-weight: 400;
+	border-radius: 1mm;
+	display: inline-block;
+	background-position: center;
+	transition: background 500ms;
+	color:$signscolor;
+	width: 13mm;
+	text-align: center;
+	padding: 3mm 2mm;
+	margin: auto;
+	margin-left:auto;
+	margin-right: 4mm;
+
+
+}
+
+#menu-btn:active{
+	background-color: $bgactive;
+transition: background 0ms;
+
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./menu.scss";
 
 
 class TitleBar extends React.Component{
