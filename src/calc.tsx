@@ -35,7 +35,19 @@ class Calc{
 		}
 	}
 	tan(x:number){
+		
 		return this.sin(x) / this.cos(x);
+	}
+
+	sinINV(x:number){
+		return 1 / this.sin(x);
+	}
+	cosINV(x:number){
+		return 1 / this.cos(x);
+	}
+
+	tanINV(x:number){
+		return 1 / this.tan(x);
 	}
 	round(x:number,n:number){
 
@@ -72,7 +84,11 @@ class Calc{
 			"√(":"Math.sqrt(",
 			"ln(":"Math.log(",
 			"log(":"Math.log10(",
-			"!(":"this.factorial("
+			"!(":"this.factorial(",
+			"^2":"**2",
+			"sin⁻¹(":"this.sinINV(",
+			"cos⁻¹(":"this.cosINV(",
+			"tan⁻¹(":"this.tanINV("
 		}
 
 		inputSlice = Calc.replaceAll(inputSlice,replacements);
@@ -90,7 +106,11 @@ class Calc{
 			"log":"log(",
 			"ln":"ln(",
 			"√":"√(",
-			"!":"!("
+			"!":"!(",
+			"x²":"^2",
+			"sin⁻¹":"sin⁻¹(",
+			"cos⁻¹":"cos⁻¹(",
+			"tan⁻¹":"tan⁻¹("
 		}
 		input = this.replaceAll(input,replacements);
 
