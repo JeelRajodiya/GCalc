@@ -72,8 +72,7 @@ class Calc{
 			"√(":"Math.sqrt(",
 			"ln(":"Math.log(",
 			"log(":"Math.log10(",
-
-
+			"!(":"this.factorial("
 		}
 
 		inputSlice = Calc.replaceAll(inputSlice,replacements);
@@ -90,7 +89,8 @@ class Calc{
 			"cos":"cos(",
 			"log":"log(",
 			"ln":"ln(",
-			"√":"√("
+			"√":"√(",
+			"!":"!("
 		}
 		input = this.replaceAll(input,replacements);
 
@@ -130,7 +130,8 @@ class Calc{
 			displayMainVal = "";
 			displaySubVal = "";
 			displayData = [];
-		}
+        }
+        
 		displaySubVal = this.round(parseFloat(displaySubVal),4).toString()
 		return [displayData,displayMainVal,displaySubVal]
 	}

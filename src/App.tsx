@@ -57,7 +57,7 @@ class Calculator extends React.Component<{},CalcState>{
         ["INV","RAD","sin⁻¹","cos⁻¹","tan⁻¹"],
         ["%"  ,"eⁿ" ,"10ⁿ", "x²" ,"^"  ],
         ["π"  ,"e"  ,"("  ,")"  ,"!"  ]]
-
+    
         this.state = {
             displayVal:"",
             subDisplayVal:"",
