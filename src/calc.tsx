@@ -37,6 +37,17 @@ class Calc{
 	tan(x:number){
 		return this.sin(x) / this.cos(x);
 	}
+	round(x:number,n:number){
+
+		n = (10**n);
+
+		let temp_x = x * n ;
+		temp_x = Math.round(temp_x);
+		x = temp_x / n;
+		if (x || x===0){return x}
+		else {return ""}
+		
+	}
 	factorial(x:number){
 		var rval = 1;
 		for (let i = 2 ; i <= x ; i++){
@@ -99,11 +110,17 @@ class Calc{
 		let displayMainVal = displayData.join("");
 		let displaySubVal = "";
 
+		let displayDataVal =this.genJsString(displayData) ;
 		try{
-			let displayDataVal =this.genJsString(displayData) ;
 			displaySubVal = eval(displayDataVal).toString();
 		}
-		catch(e){}
+		catch(e){
+			try{
+				displayDataVal += ")";
+				displaySubVal = eval(displayDataVal).toString();
+				}
+			catch{}
+		}
 		if (event === "="){
 			displayMainVal = displaySubVal;
 			displaySubVal = ""
@@ -114,7 +131,7 @@ class Calc{
 			displaySubVal = "";
 			displayData = [];
 		}
-
+		displaySubVal = this.round(parseFloat(displaySubVal),4).toString()
 		return [displayData,displayMainVal,displaySubVal]
 	}
 }
