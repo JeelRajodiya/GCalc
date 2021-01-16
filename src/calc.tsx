@@ -88,7 +88,9 @@ class Calc{
 			"^2":"**2",
 			"sin⁻¹(":"this.sinINV(",
 			"cos⁻¹(":"this.cosINV(",
-			"tan⁻¹(":"this.tanINV("
+            "tan⁻¹(":"this.tanINV(",
+            "10^":"10**",
+            "e^":"Math.E**"
 		}
 
 		inputSlice = Calc.replaceAll(inputSlice,replacements);
@@ -110,7 +112,9 @@ class Calc{
 			"x²":"^2",
 			"sin⁻¹":"sin⁻¹(",
 			"cos⁻¹":"cos⁻¹(",
-			"tan⁻¹":"tan⁻¹("
+            "tan⁻¹":"tan⁻¹(",
+            "eⁿ":"e^",
+            "10ⁿ":"10^"
 		}
 		input = this.replaceAll(input,replacements);
 

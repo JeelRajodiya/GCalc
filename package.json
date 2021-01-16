@@ -22,6 +22,7 @@
     "ionic": "^5.4.16",
     "ionic-native": "^2.9.0",
     "ionicons": "^5.0.0",
+    "jquery": "^3.5.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router": "^5.1.2",

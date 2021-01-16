@@ -1,14 +1,30 @@
 import React from "react";
+
 import "./display.scss"
 interface DisplayMainProps{
 value:string;
 }
 class DisplayMain extends React.Component<DisplayMainProps>{
-
+    private ref:any;
+    constructor(props:any){
+        super(props);
+        this.ref = React.createRef()
+    }
+        
     render(){
+        
         return (
             //@ts-ignore
-            <input id="display-main" name="search" value={this.props.value} readOnly={true}>
+            <input 
+            id="display-main"
+             ref = {this.ref}
+             name="search"
+             size={300}
+             type="search"
+             value={this.props.value} 
+             readOnly={false}
+             
+            >
 
             </input>
             )
