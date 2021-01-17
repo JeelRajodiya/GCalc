@@ -21,7 +21,7 @@ class DisplayMain extends React.Component<DisplayMainProps>{
              name="search"
              type="search"
              value={this.props.value} 
-             readOnly={false}
+             readOnly={true}
              
             >
 
