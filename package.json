@@ -2,6 +2,7 @@
   "name": "test",
   "version": "0.0.1",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@capacitor/android": "^2.4.3",
     "@capacitor/core": "2.4.3",
