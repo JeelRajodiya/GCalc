@@ -19,7 +19,6 @@ class DisplayMain extends React.Component<DisplayMainProps>{
             id="display-main"
              ref = {this.ref}
              name="search"
-             size={300}
              type="search"
              value={this.props.value} 
              readOnly={false}
