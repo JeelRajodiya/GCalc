@@ -156,7 +156,7 @@ class Calc{
 			displayData = [];
         }
         
-		displaySubVal = this.round(parseFloat(displaySubVal),4).toString()
+		// displaySubVal = this.round(parseFloat(displaySubVal),4).toString()
 		return [displayData,displayMainVal,displaySubVal]
 	}
 }
