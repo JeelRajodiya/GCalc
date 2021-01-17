@@ -5,7 +5,7 @@ clone of google's android calculator but in React.
 A calculator made with javascript , ionic and React.
 it is currently under development.
 
-download [APK file](https://github.com/jeel2331/GCalc/raw/main/src/build/app-debug.apk)
+>download [***APK file***](https://github.com/jeel2331/GCalc/raw/main/src/build/app-debug.apk)
 of latest build
 
 
@@ -41,6 +41,6 @@ ionic cap add android
 (if you don't have anroid sdk download it)
 
 to generate apk use `gradle assembleDebug`
-it will create a apk under ***GCalc/android\app\build\outputs\apk\debug***
+it will create a apk under ***GCalc/android\app\build\outputs\apk\debug*** folder
 
 ***it is now ready to use***
